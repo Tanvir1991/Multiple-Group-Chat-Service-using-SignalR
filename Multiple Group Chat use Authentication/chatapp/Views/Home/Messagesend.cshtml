@@ -1,0 +1,29 @@
+﻿<div style="background-color:#cbe8ec">
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        <form name="exampleForm" class="myForm" style="width: 600px;">
+            <div style="text-align:center"><h3>Chat Message Area: </h3></div>
+            <div id="dvmsg" style="padding: 10px; width: 380px;margin-left: 325px;border: solid;border-radius: 20px;margin-top: 20px;background-color: #e9f0f1;">
+                <div style="height:400px;overflow:auto;">
+                    <div ng-repeat="m in chatMessage" style="word-wrap: break-word;background-color:#e0ecf2;margin:10px;padding:10px;border-radius:20px;">
+                        <div>
+                            {{m.Name}}:{{m.Msg}}
+                        </div>
+                        <div ng-show="{{m.img}}">
+                            You : <img src="http://localhost:2352{{m.Msg}}" alt="Image" style="width:300px;" />
+                        </div>
+                        <div ng-show="{{m.others}}">
+                            You : <a href="http://localhost:2352{{m.Msg}}" target="_blank" style="width:300px;">View</a>
+                        </div>
+                    </div>
+                </div> <br />
+                <input type="text" placeholder="mesage" ng-model="messag" name="msg" style="width: 600px;height:50px; " required />
+                <input type="button" value="Send" ng-click="sendchat()" class="btn btn-primary" />
+                <input type="file" id="file" name="file" onchange="angular.element(this).scope().setFile(this)" accept="image/*" class="btn btn-primary" style="width:600px;" />
+
+            </div>
+        </form>
+
+    }
+</div>
